@@ -1,0 +1,71 @@
+## Problem
+
+https://leetcode.com/problems/palindrome-number/
+
+## Problem Description
+
+Given an integer `x`, return `true` if `x` is a *palindrome*, and `false` *otherwise*.
+
+
+**Example 1:**
+
+**Input:** x = 121  <br>
+**Output:** true  <br>
+**Explanation:** 121 reads as 121 from left to right and from right to left.
+
+
+
+## Approach
+這在 Python 換成字串再反轉就好了。不過，還是嘗試一下用數學運算吧。
+1. 將 x 反覆除於10，並依序將餘數轉為新的數的百分位、十分位、個位數。
+2. 檢查兩者是否相等。
+
+
+## Code
+
+- Support Language: Java, Python
+
+Python Code:
+
+利用 python 的 slicing:
+```py
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        result = str(x)[::-1]
+        if(str(x) == result):
+            return True
+        else: 
+            return False
+```
+
+數學運算：
+```py
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        if x >= 0 and x < 10:
+            return True
+        elif x < 0 or x % 10 == 0:   
+            return False
+
+        result = 0
+        nums = x
+        while nums > 0:
+            result = result * 10 + nums % 10
+            nums = nums // 10
+        
+        if x == result:
+            return True
+        else:
+            return False
+```
+
+Java Code:
+
+```
+
+```
+
+**_Complexity Anlysis_**
+
+- _Time Complexity_: 
+- _Space Complexity_：
